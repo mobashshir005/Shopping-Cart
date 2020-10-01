@@ -57,8 +57,7 @@ def addItem():
         #Uploading image procedure
         image = request.files['image']
         if image and allowed_file(image.filename):
-            filename = secure_filename(image.filename)
-            image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            image.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(image.filename))
         imagename = filename
         with sqlite3.connect('database.db') as conn:
             try:
